@@ -21,90 +21,64 @@
     <link rel="icon" href="https://i.ibb.co/7VnWfpN/chaeryeong-icon.png" type="image/png">
 
     <style>
-      body {
-        font-family: 'Poppins', sans-serif;
-        background-color: #ffcce6;
-        color: #333;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-      }
-      header {
-        background: linear-gradient(135deg, #ffb6d5, #ffd6eb);
-        padding: 30px;
-        border-bottom: 4px solid #ff6fa1;
-      }
-      h1 {
-        color: #d63384;
-        font-size: 2.5em;
-      }
-      a {
-        color: #d63384;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      .subscribe-btn {
-        display: inline-block;
-        background-color: #ff4fa1;
-        color: white;
-        padding: 12px 25px;
-        border-radius: 40px;
-        font-weight: bold;
-        margin-top: 15px;
-        transition: 0.3s;
-      }
-      .subscribe-btn:hover {
-        background-color: #e03e8c;
-        transform: scale(1.05);
-      }
-      section {
-        padding: 25px;
-        background-color: rgba(255, 255, 255, 0.8);
-        border-radius: 25px;
-        margin: 30px auto;
-        width: 85%;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      }
-      figure {
-        display: inline-block;
-        margin: 20px;
-      }
-      img {
-        width: 300px;
-        border-radius: 20px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      }
-      figcaption {
-        margin-top: 10px;
-        font-style: italic;
-      }
-      footer {
-        margin-top: 40px;
-        padding: 20px;
-        background: linear-gradient(135deg, #ffd6eb, #ffb6d5);
-        border-top: 4px solid #ff6fa1;
-      }
-      .domain-info {
-        font-size: 14px;
-        color: #555;
-      }
+      body{font-family:'Poppins',sans-serif;background:#ffcce6;color:#333;margin:0;text-align:center;}
+      header{background:linear-gradient(135deg,#ffb6d5,#ffd6eb);padding:30px;border-bottom:4px solid #ff6fa1;}
+      .top-bar{display:flex;justify-content:flex-end;margin-bottom:10px;}
+      .signin-btn{background:#ff6fa1;color:white;padding:10px 20px;border-radius:30px;font-weight:bold;cursor:pointer;transition:.3s;}
+      .signin-btn:hover{background:#e03e8c;transform:scale(1.05);}
+      h1{color:#d63384;font-size:2.5em;}
+      a{color:#d63384;text-decoration:none;}
+      a:hover{text-decoration:underline;}
+      .subscribe-btn{display:inline-block;background:#ff4fa1;color:white;padding:12px 25px;border-radius:40px;font-weight:bold;margin-top:15px;transition:.3s;}
+      .subscribe-btn:hover{background:#e03e8c;transform:scale(1.05);}
+      section{padding:25px;background:rgba(255,255,255,0.8);border-radius:25px;margin:30px auto;width:85%;box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+      figure{display:inline-block;margin:20px;}
+      img{width:300px;border-radius:20px;box-shadow:0 4px 8px rgba(0,0,0,0.1);}
+      figcaption{margin-top:10px;font-style:italic;}
+      footer{margin-top:40px;padding:20px;background:linear-gradient(135deg,#ffd6eb,#ffb6d5);border-top:4px solid #ff6fa1;}
+
+      /* Popup */
+      .popup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;z-index:10;opacity:0;transition:opacity .4s;}
+      .popup.show{display:flex;opacity:1;}
+      .popup-content{background:white;padding:30px;border-radius:25px;box-shadow:0 4px 10px rgba(0,0,0,0.1);width:300px;animation:slideUp .4s;}
+      @keyframes slideUp{from{transform:translateY(50px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+      .popup-content input{width:80%;padding:10px;margin:10px;border-radius:20px;border:1px solid #ff6fa1;}
+      .popup-content button{background:#ff6fa1;color:white;padding:10px 25px;border:none;border-radius:30px;cursor:pointer;transition:.3s;}
+      .popup-content button:hover{background:#e03e8c;transform:scale(1.05);}
+      .close-btn{float:right;font-weight:bold;color:#ff4fa1;cursor:pointer;font-size:20px;}
+      .message{margin-top:15px;color:#d63384;font-weight:bold;}
+
+      /* Community */
+      .post-box textarea{width:80%;height:60px;border-radius:15px;border:1px solid #ff6fa1;padding:10px;resize:none;}
+      .post-box input[type="file"]{margin-top:8px;}
+      .post-box button{margin-top:10px;background:#ff6fa1;color:white;border:none;padding:8px 20px;border-radius:25px;cursor:pointer;transition:.3s;}
+      .post-box button:hover{background:#e03e8c;}
+      .post{background:white;margin:10px auto;padding:10px;border-radius:15px;max-width:400px;box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+      .post-user{color:#d63384;font-weight:bold;}
+      .post img{width:150px;border-radius:10px;margin-top:8px;cursor:pointer;transition:transform .2s;}
+      .post img:hover{transform:scale(1.05);}
+      #imgPopup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;z-index:20;}
+      #imgPopup img{max-width:90%;max-height:90%;border-radius:20px;box-shadow:0 4px 10px rgba(255,255,255,0.3);}
     </style>
   </head>
+
   <body>
     <header>
+      <div class="top-bar"><span class="signin-btn" id="signinBtn">Sign In</span></div>
       <h1>🦊 Welcome to Chaeryeong's Diary 🦊</h1>
-      <p>🦊 Dive into the world of Chaeryeong from ITZY — dancer, vocalist, and artist extraordinaire. Discover her moments, performances, and unforgettable charm. 🦊</p>
+      <p>Dive into the world of Chaeryeong from ITZY — dancer, vocalist, and artist extraordinaire. Discover her moments, performances, and unforgettable charm.</p>
       <a class="subscribe-btn" href="https://www.youtube.com/@ChaeryeongDiary" target="_blank">💖 Subscribe to Chaeryeong Diary 💖</a>
+      <br>
+      <a class="subscribe-btn" href="https://discord.gg/nWNXnEyCG" target="_blank">🌸 Join the Chaeryeong Community 🌸</a>
     </header>
 
+    <!-- Original content -->
     <section>
-      <h2>🦊 Highlights 🦊</h2>
+      <h2>Highlights</h2>
       <p>Explore Chaeryeong’s best highlights — from her dazzling stage presence to behind-the-scenes laughter and pure artistry.</p>
-      <ul style="list-style: none; padding: 0;">
-        <li><a href="https://www.youtube.com/watch?v=qpvG4RxunwA" target="_blank">🦊 Performances</a></li>
-        <li><a href="https://www.youtube.com/watch?v=bcsb55_TFoQ" target="_blank">🦊 Behind the Scenes</a></li>
+      <ul style="list-style:none;padding:0;">
+        <li><a href="https://www.youtube.com/watch?v=qpvG4RxunwA" target="_blank">Performances</a></li>
+        <li><a href="https://www.youtube.com/watch?v=bcsb55_TFoQ" target="_blank">Behind the Scenes</a></li>
       </ul>
     </section>
 
@@ -116,14 +90,12 @@
         </a>
         <figcaption>🦊 Powerful Performance: Chaeryeong lighting up the stage 🦊</figcaption>
       </figure>
-
       <figure>
         <a href="https://www.youtube.com/watch?v=bcsb55_TFoQ" target="_blank">
           <img src="https://i0.wp.com/kstationtv.com/wp-content/uploads/2023/11/ITZY-CHAERYEONG-2.jpg?fit=540%2C675&ssl=1" alt="Chaeryeong smiling behind the scenes">
         </a>
         <figcaption>🦊 Behind the Scenes: Chaeryeong’s sweet candid moments 🦊</figcaption>
       </figure>
-
       <figure>
         <a href="https://www.youtube.com/watch?v=qpvG4RxunwA" target="_blank">
           <img src="https://64.media.tumblr.com/ae27c8623532c24674451c4a11592e96/0eb14b03a86a1961-c4/s1280x1920/2b17e6d837829c37979d580bab9cbd2e7d764776.jpg" alt="Chaeryeong serene photoshoot">
@@ -132,9 +104,179 @@
       </figure>
     </section>
 
-    <footer>
-      <p>🦊 © 2025 <a href="https://chaeryeongdiary.com" target="_blank">Chaeryeong Diary</a> — Made with 💕 by MIDZYs 🦊</p>
-      <p class="domain-info">Official site: <a href="https://chaeryeongdiary.com" target="_blank">chaeryeongdiary.com</a></p>
-    </footer>
+    <!-- Community -->
+    <section id="community">
+      <h2>🌸 Chaeryeong Diary Community 🌸</h2>
+      <div id="postArea"></div>
+      <div id="posts"></div>
+    </section>
+
+    <footer><p>🦊 © 2025 Chaeryeong Diary — Made with 💕 by MIDZYs 🦊</p></footer>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <h3 id="popupTitle">💖 Sign In 💖</h3>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button id="submitBtn">Continue</button>
+        <div class="message" id="message"></div>
+      </div>
+    </div>
+
+    <!-- Image popup -->
+    <div id="imgPopup"><img src="" alt="post image"></div>
+<script>
+  const signinBtn=document.getElementById('signinBtn');
+  const popup=document.getElementById('popup');
+  const closeBtn=document.getElementById('closeBtn');
+  const submitBtn=document.getElementById('submitBtn');
+  const message=document.getElementById('message');
+  const popupTitle=document.getElementById('popupTitle');
+  const postArea=document.getElementById('postArea');
+  const postsDiv=document.getElementById('posts');
+  const imgPopup=document.getElementById('imgPopup');
+  const popupImg=imgPopup.querySelector('img');
+  let mode="signin";
+
+  // 🌸 Sign in popup
+  signinBtn.onclick=()=>{mode=(mode==="signin"?"login":"signin");popupTitle.textContent=(mode==="login")?"💞 Log In 💞":"💖 Sign In 💖";popup.classList.add('show');};
+  closeBtn.onclick=()=>popup.classList.remove('show');
+  window.onclick=(e)=>{if(e.target===popup)popup.classList.remove('show');};
+  submitBtn.onclick=()=>{
+    const user=document.getElementById('username').value.trim();
+    const pass=document.getElementById('password').value.trim();
+    if(user&&pass){
+      localStorage.setItem('chaeryeongUser',user);
+      message.textContent=`Welcome ${user}! 💕`;
+      setTimeout(()=>{popup.classList.remove('show');location.reload();},800);
+    }else{
+      message.textContent='Please fill both fields 💫';
+      message.style.color='red';
+    }
+  };
+
+  // 🌸 Confirmation popup creator
+  function confirmDelete(callback){
+    const confirmBox=document.createElement('div');
+    confirmBox.style.position='fixed';
+    confirmBox.style.top='0';
+    confirmBox.style.left='0';
+    confirmBox.style.width='100%';
+    confirmBox.style.height='100%';
+    confirmBox.style.background='rgba(0,0,0,0.5)';
+    confirmBox.style.display='flex';
+    confirmBox.style.justifyContent='center';
+    confirmBox.style.alignItems='center';
+    confirmBox.style.zIndex='100';
+
+    const box=document.createElement('div');
+    box.style.background='white';
+    box.style.padding='25px';
+    box.style.borderRadius='20px';
+    box.style.textAlign='center';
+    box.style.boxShadow='0 4px 10px rgba(0,0,0,0.2)';
+    box.innerHTML=`
+      <p style="color:#d63384;font-weight:bold;font-size:18px;">Are you sure you want to delete this post?</p>
+      <button id="yesBtn" style="background:#ff4fa1;color:white;border:none;padding:8px 18px;border-radius:25px;cursor:pointer;margin:5px;">Yes 💔</button>
+      <button id="noBtn" style="background:#ffb6d5;color:white;border:none;padding:8px 18px;border-radius:25px;cursor:pointer;margin:5px;">No 💕</button>
+    `;
+    confirmBox.appendChild(box);
+    document.body.appendChild(confirmBox);
+
+    document.getElementById('yesBtn').onclick=()=>{callback(true);document.body.removeChild(confirmBox);};
+    document.getElementById('noBtn').onclick=()=>{callback(false);document.body.removeChild(confirmBox);};
+  }
+
+  // 🌸 Load posts (visible to everyone)
+  function loadPosts(){
+    const savedUser=localStorage.getItem('chaeryeongUser');
+    const data=JSON.parse(localStorage.getItem('chaeryeongPosts')||"[]");
+    postsDiv.innerHTML="";
+    data.forEach((p,i)=>{
+      const d=document.createElement('div');
+      d.className='post';
+      d.innerHTML=`
+        <div class='post-user'>${p.user}</div>
+        <div>${p.text}</div>
+        ${p.image?`<img src='${p.image}' alt='post image'>`:''}
+        ${savedUser===p.user?`<button class='delete-btn' data-index='${i}'>🗑️ Delete</button>`:''}
+      `;
+      postsDiv.prepend(d);
+    });
+
+    // 💖 Image popup
+    document.querySelectorAll('.post img').forEach(img=>{
+      img.onclick=()=>{popupImg.src=img.src;imgPopup.style.display='flex';};
+    });
+    imgPopup.onclick=()=>imgPopup.style.display='none';
+
+    // 💖 Delete confirmation
+    document.querySelectorAll('.delete-btn').forEach(btn=>{
+      btn.onclick=()=>{
+        const index=btn.getAttribute('data-index');
+        confirmDelete((ok)=>{
+          if(ok){
+            let posts=JSON.parse(localStorage.getItem('chaeryeongPosts')||"[]");
+            posts.splice(index,1);
+            localStorage.setItem('chaeryeongPosts',JSON.stringify(posts));
+            loadPosts();
+          }
+        });
+      };
+    });
+  }
+
+  // 🌸 Post box with optional image
+  function renderPostBox(user){
+    if(user){
+      postArea.innerHTML=`
+        <div class='post-box'>
+          <textarea id='postInput' placeholder='Share your love for Chaeryeong...'></textarea><br>
+          <input type='file' id='imageInput' accept='image/*'><br>
+          <button id='postBtn'>Post</button>
+        </div>`;
+      document.getElementById('postBtn').onclick=()=>{
+        const text=document.getElementById('postInput').value.trim();
+        const file=document.getElementById('imageInput').files[0];
+        if(!text&&!file)return;
+        const data=JSON.parse(localStorage.getItem('chaeryeongPosts')||"[]");
+        if(file){
+          const reader=new FileReader();
+          reader.onload=()=>{
+            data.push({user,text,image:reader.result});
+            localStorage.setItem('chaeryeongPosts',JSON.stringify(data));
+            document.getElementById('postInput').value="";
+            document.getElementById('imageInput').value="";
+            loadPosts();
+          };
+          reader.readAsDataURL(file);
+        }else{
+          data.push({user,text});
+          localStorage.setItem('chaeryeongPosts',JSON.stringify(data));
+          document.getElementById('postInput').value="";
+          loadPosts();
+        }
+      };
+    }else{
+      postArea.innerHTML="<p>💫 Please sign in to post your message 💫</p>";
+    }
+  }
+
+  // 🌸 Handle saved user
+  const savedUser=localStorage.getItem('chaeryeongUser');
+  if(savedUser){
+    signinBtn.textContent='Sign Out';
+    signinBtn.onclick=()=>{localStorage.removeItem('chaeryeongUser');location.reload();};
+    const header=document.querySelector('header');
+    const welcome=document.createElement('p');
+    welcome.textContent=`🌸 Welcome back, ${savedUser}! 🌸`;
+    welcome.style.color='#d63384';
+    header.appendChild(welcome);
+  }
+
+  renderPostBox(savedUser);
+  loadPosts();
+</script>
   </body>
-</html>
