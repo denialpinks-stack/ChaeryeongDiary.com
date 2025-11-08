@@ -50,7 +50,31 @@
 
       /* Community */
       .post-box textarea{width:80%;height:60px;border-radius:15px;border:1px solid #ff6fa1;padding:10px;resize:none;}
-      .post-box input[type="file"]{margin-top:8px;}
+     /* 🌸 Cute Add Picture Button */
+.post-box input[type="file"] {
+  display: none; /* hide default input */
+}
+
+.post-box label.add-pic-btn {
+  display: inline-block;
+  margin-top: 8px;
+  background: linear-gradient(135deg, #ffb6d5, #ff6fa1);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.post-box label.add-pic-btn:hover {
+  background: #e03e8c;
+  transform: scale(1.05);
+}
+
+
+
       .post-box button{margin-top:10px;background:#ff6fa1;color:white;border:none;padding:8px 20px;border-radius:25px;cursor:pointer;transition:.3s;}
       .post-box button:hover{background:#e03e8c;}
       .post{background:white;margin:10px auto;padding:10px;border-radius:15px;max-width:400px;box-shadow:0 2px 5px rgba(0,0,0,0.1);}
@@ -63,14 +87,18 @@
   </head>
 
   <body>
-    <header>
-      <div class="top-bar"><span class="signin-btn" id="signinBtn">Sign In</span></div>
-      <h1>🦊 Welcome to Chaeryeong's Diary 🦊</h1>
-      <p>Dive into the world of Chaeryeong from ITZY — dancer, vocalist, and artist extraordinaire. Discover her moments, performances, and unforgettable charm.</p>
-      <a class="subscribe-btn" href="https://www.youtube.com/@ChaeryeongDiary" target="_blank">💖 Subscribe to Chaeryeong Diary 💖</a>
-      <br>
-      <a class="subscribe-btn" href="https://discord.gg/nWNXnEyCG" target="_blank">🌸 Join the Chaeryeong Community 🌸</a>
-    </header>
+  <header>
+  <div class="top-bar">
+    <span class="signin-btn" id="signinBtn">Sign In</span>
+    <span class="signin-btn" id="communityBtn" style="margin-left:10px;">Post in Community</span>
+  </div>
+  <h1>🦊 Welcome to Chaeryeong's Diary 🦊</h1>
+  <p>Dive into the world of Chaeryeong from ITZY — dancer, vocalist, and artist extraordinaire. Discover her moments, performances, and unforgettable charm.</p>
+  <a class="subscribe-btn" href="https://www.youtube.com/@ChaeryeongDiary" target="_blank">💖 Subscribe to Chaeryeong Diary 💖</a>
+  <br>
+  <a class="subscribe-btn" href="https://discord.gg/nWNXnEyCG" target="_blank">🌸 Join the Chaeryeong Community 🌸</a>
+</header>
+
 
     <!-- Original content -->
     <section>
@@ -81,29 +109,49 @@
         <li><a href="https://www.youtube.com/watch?v=bcsb55_TFoQ" target="_blank">Behind the Scenes</a></li>
       </ul>
     </section>
+<section style="padding:20px; text-align:center; background:#fff;">
+  <h2 style="font-size:2em; margin-bottom:10px;">🎬 Top Shorts from Chaeryeong Diary 🎬</h2>
+  <p style="font-size:1.1em; color:#555; margin-bottom:30px;">
+    Enjoy the most loved and trending Chaeryeong Diary Shorts — moments that capture her energy, charm, and artistry 💕
+  </p>
 
-    <section>
-      <h2>🦊 Top Moments 🦊</h2>
-      <figure>
-        <a href="https://www.youtube.com/watch?v=qpvG4RxunwA" target="_blank">
-          <img src="https://i.ytimg.com/vi/aGs-OmTWvJk/maxresdefault.jpg" alt="Chaeryeong performing on stage">
-        </a>
-        <figcaption>🦊 Powerful Performance: Chaeryeong lighting up the stage 🦊</figcaption>
-      </figure>
-      <figure>
-        <a href="https://www.youtube.com/watch?v=bcsb55_TFoQ" target="_blank">
-          <img src="https://i0.wp.com/kstationtv.com/wp-content/uploads/2023/11/ITZY-CHAERYEONG-2.jpg?fit=540%2C675&ssl=1" alt="Chaeryeong smiling behind the scenes">
-        </a>
-        <figcaption>🦊 Behind the Scenes: Chaeryeong’s sweet candid moments 🦊</figcaption>
-      </figure>
-      <figure>
-        <a href="https://www.youtube.com/watch?v=qpvG4RxunwA" target="_blank">
-          <img src="https://64.media.tumblr.com/ae27c8623532c24674451c4a11592e96/0eb14b03a86a1961-c4/s1280x1920/2b17e6d837829c37979d580bab9cbd2e7d764776.jpg" alt="Chaeryeong serene photoshoot">
-        </a>
-        <figcaption>🦊 Serene Beauty: A moment of calm and elegance 🦊</figcaption>
-      </figure>
-    </section>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px; justify-items:center;">
 
+    <!-- Video 1 -->
+    <a href="https://www.youtube.com/shorts/yEJIao2aZ0A" target="_blank" style="position:relative; width:250px; height:440px; border-radius:12px; overflow:hidden; box-shadow:0 8px 16px rgba(0,0,0,0.2); transition: transform 0.3s;">
+      <img src="https://img.youtube.com/vi/yEJIao2aZ0A/maxresdefault.jpg" alt="Chaeryeong Diary Short #1" style="width:100%; height:100%; object-fit:cover;">
+      <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.25)); display:flex; align-items:center; justify-content:center;">
+        <span style="font-size:50px; color:white;">▶️</span>
+      </div>
+    </a>
+
+    <!-- Video 2 -->
+    <a href="https://www.youtube.com/shorts/UtNTs_RTxWo" target="_blank" style="position:relative; width:250px; height:440px; border-radius:12px; overflow:hidden; box-shadow:0 8px 16px rgba(0,0,0,0.2); transition: transform 0.3s;">
+      <img src="https://img.youtube.com/vi/UtNTs_RTxWo/maxresdefault.jpg" alt="Chaeryeong Diary Short #2" style="width:100%; height:100%; object-fit:cover;">
+      <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.25)); display:flex; align-items:center; justify-content:center;">
+        <span style="font-size:50px; color:white;">▶️</span>
+      </div>
+    </a>
+
+    <!-- Video 3 -->
+    <a href="https://www.youtube.com/shorts/B95iOL0CDjk" target="_blank" style="position:relative; width:250px; height:440px; border-radius:12px; overflow:hidden; box-shadow:0 8px 16px rgba(0,0,0,0.2); transition: transform 0.3s;">
+      <img src="https://img.youtube.com/vi/B95iOL0CDjk/maxresdefault.jpg" alt="Chaeryeong fans unity" style="width:100%; height:100%; object-fit:cover;">
+      <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.25)); display:flex; align-items:center; justify-content:center;">
+        <span style="font-size:50px; color:white;">▶️</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<style>
+  a:hover {
+    transform: scale(1.05);
+  }
+  @media (max-width: 768px) {
+    a { width:90%; height:auto; }
+  }
+</style>
     <!-- Community -->
     <section id="community">
       <h2>🌸 Chaeryeong Diary Community 🌸</h2>
@@ -234,7 +282,9 @@
       postArea.innerHTML=`
         <div class='post-box'>
           <textarea id='postInput' placeholder='Share your love for Chaeryeong...'></textarea><br>
-          <input type='file' id='imageInput' accept='image/*'><br>
+          <label for='imageInput' class='add-pic-btn'>📸 Add Picture</label>
+          <input type='file' id='imageInput' accept='image/*'>
+          <br>
           <button id='postBtn'>Post</button>
         </div>`;
       document.getElementById('postBtn').onclick=()=>{
@@ -278,5 +328,19 @@
 
   renderPostBox(savedUser);
   loadPosts();
+// 🌸 Scroll to community when "Post in Community" is clicked
+const communityBtn = document.getElementById('communityBtn');
+communityBtn.onclick = () => {
+  document.getElementById('community').scrollIntoView({ behavior: 'smooth' });
+};
+
 </script>
   </body>
+</html>
+
+
+  renderPostBox(savedUser);
+  loadPosts();
+</script>
+  </body>
+
